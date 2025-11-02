@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ONDE VAI?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1 class="ondeB"><b>ONDE VAI?</b></h1>
+  <h2 class="tex2">Arraste o resíduo para a lixeira correta</h2>
+
+
+<div class="residuos-container">
+  <div class="residuo-item">
+    <img class="residuo" src="papel.jpg" alt="Papel">
+    <p class="nome-residuo">Papel</p>
+  </div>
+
+
+  <div class="residuo-item">
+    <img class="residuo" src="leite.png" alt="Leite">
+    <p class="nome-residuo">Caixa de leite (embalagem)</p>
+  </div>
+
+<div class="residuo-item">
+    <img class="residuo" src="sacola.png" alt="Sacola">
+    <p class="nome-residuo">Sacola</p>
+  </div>
+
+  <div class="residuo-item">
+    <img class="residuo" src="vidro.png" alt="Vidro">
+    <p class="nome-residuo">Vidro</p>
+  </div>
+
+  <div class="residuo-item">
+    <img class="residuo" src="refri.png" alt="Lata de Refrigerante">
+    <p class="nome-residuo">Lata de refrigerante</p>
+  </div>
+
+<div class="residuo-item">
+    <img class="residuo" src="ovos.png" alt="Casca de ovo">
+    <p class="nome-residuo">Casca de ovo</p>
+  </div>
+
+ <div class="residuo-item">
+    <img class="residuo" src="canudo.png" alt="Canudo">
+    <p class="nome-residuo">Canudo</p>
+  </div>
+
+<div class="residuo-item">
+    <img class="residuo" src="copo.png" alt="Copo">
+    <p class="nome-residuo">Copo</p>
+  </div>
+
+<div class="residuo-item">
+    <img class="residuo" src="caneta.png" alt="Caneta">
+    <p class="nome-residuo">Caneta</p>
+  </div>
+
+<div class="residuo-item">
+    <img class="residuo" src="restodecomida.png" alt="Resto de comida">
+    <p class="nome-residuo">Resto de comida</p>
+  </div>
+
+  <div class="residuo-item">
+    <img class="residuo" src="plastico.png" alt="Plástico">
+    <p class="nome-residuo">Garrafa</p>
+  </div>
+
+  <div class="residuo-item">
+    <img class="residuo" src="chiclete.png" alt="Chiclete">
+    <p class="nome-residuo">Chiclete</p>
+  </div>
+
+  <div class="residuo-item">
+    <img class="residuo" src="metal.png" alt="Metal">
+    <p class="nome-residuo">Lata</p>
+  </div>
+
+<div class="residuo-item">
+    <img class="residuo" src="papelhigienico.png" alt="papel higienico">
+    <p class="nome-residuo">Papel higiênico (usado)</p>
+  </div>
+  
+  <div class="residuo-item">
+    <img class="residuo" src="organico.png" alt="Orgânico">
+    <p class="nome-residuo">Casca de banana</p>
+  </div>
+
+  <div class="residuo-item">
+    <img class="residuo" src="naoreciclavel.png" alt="Não Reciclável">
+    <p class="nome-residuo">Cotonete</p>
+  </div>
+
+  <div class="residuo-item">
+    <img class="residuo" src="caixadepapelao.jpg" alt="Caixa de Papelão">
+    <p class="nome-residuo">Caixa de Papelão</p>
+  </div>
+</div>
+
+
+
+    <div class="lixeiras">
+      <img src="Lamarelo.png" alt="lixeira amarelo" />
+      <img src="Lazul.png" alt="lixeira azul" />
+      <img src="Lcinza.png" alt="lixeira cinza" />
+      <img src="Lmarrom.png" alt="lixeira marrom" />
+      <img src="Lverde.png" alt="lixeira verde" />
+      <img src="Lvermelha.png" alt="lixeira vermelha" />
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+  const residuos = Array.from(document.querySelectorAll('.residuo-item'));
+  const lixeiras = document.querySelectorAll('.lixeiras img');
+
+  const mapaLixeiras = {
+    'papel.jpg': 'Lazul.png',
+    'canudo.png':'Lvermelha.png',
+    'vidro.png': 'Lverde.png',
+    'plastico.png': 'Lvermelha.png',
+    'metal.png': 'Lamarelo.png',
+    'organico.png': 'Lmarrom.png',
+    'naoreciclavel.png': 'Lcinza.png',
+    'leite.png' : 'Lvermelha.png',
+    'caixadepapelao.jpg': 'Lazul.png',
+    'caneta.png' : 'Lcinza.png',
+    'chiclete.png': 'Lcinza.png',
+    'copo.png': 'Lverde.png',
+    'ovos.png': 'Lmarrom.png',
+    'papelhigienico.png': 'Lcinza.png',
+    'refri.png': 'Lamarelo.png',
+    'restodecomida.png': 'Lmarrom.png',
+    'sacola.png':'Lvermelha.png',
+  };
+
+  // Função para criar mensagens
+  const criarMensagem = (texto, corFundo) => {
+    const el = document.createElement('div');
+    el.textContent = texto;
+    Object.assign(el.style, {
+      display: 'none',
+      position: 'fixed',
+      top: '20%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      background: corFundo,
+      color: 'white',
+      fontSize: '32px',
+      fontWeight: 'bold',
+      padding: '15px 25px',
+      borderRadius: '8px',
+      fontFamily: 'Raleway',
+      boxShadow: '0 0 15px rgba(0,0,0,0.3)',
+      zIndex: '9999',
+      opacity: '1',
+      transition: 'opacity 0.8s ease',
+      textAlign: 'center'
+    });
+    document.body.appendChild(el);
+    return el;
+  };
+
+  const mensagemAcerto = criarMensagem('MUITO BEM!', '#35a535');
+  const mensagemErro = criarMensagem('TENTE NOVAMENTE', '#d32f2f');
+
+  // Mensagem final com botão
+  const mensagemFinal = criarMensagem('', '#35a535');
+  const textoFinal = document.createElement('div');
+  textoFinal.textContent = 'PARABÉNS!';
+  textoFinal.style.marginBottom = '15px';
+  mensagemFinal.appendChild(textoFinal);
+
+  const botaoRecomeçar = document.createElement('button');
+  botaoRecomeçar.textContent = 'RECOMEÇAR';
+  Object.assign(botaoRecomeçar.style, {
+    padding: '10px 20px',
+    fontSize: '18px',
+    fontWeight: 'bold',
+    borderRadius: '6px',
+    border: 'none',
+    cursor: 'pointer',
+    background: '#ffffff',
+    color: '#35a535',
+    fontFamily: 'Raleway',
+  });
+  botaoRecomeçar.addEventListener('click', () => {
+    mensagemFinal.style.display = 'none';
+    indiceAtual = 0;
+    mostrarResiduoAtual();
+  });
+  mensagemFinal.appendChild(botaoRecomeçar);
+
+  const mostrarMensagem = (el) => {
+    el.style.display = 'block';
+    el.style.opacity = '1';
+    setTimeout(() => {
+      el.style.opacity = '0';
+      setTimeout(() => {
+        el.style.display = 'none';
+        el.style.opacity = '1';
+      }, 800);
+    }, 1000);
+  };
+
+  let indiceAtual = 0;
+
+  const mostrarResiduoAtual = () => {
+    residuos.forEach((item, idx) => {
+      item.style.display = idx === indiceAtual ? 'block' : 'none';
+      item.style.position = 'static';
+      item.style.opacity = '1';
+      item.style.cursor = 'grab';
+    });
+  };
+
+  mostrarResiduoAtual();
+
+  const configurarArrastar = (item) => {
+    const residuo = item.querySelector('.residuo');
+    let arrastando = false;
+    let offsetX = 0;
+    let offsetY = 0;
+    let startX = 0;
+    let startY = 0;
+
+    item.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      arrastando = true;
+      item.classList.add('dragging');
+
+      const rect = item.getBoundingClientRect();
+      offsetX = e.pageX - rect.left;
+      offsetY = e.pageY - rect.top;
+
+      startX = rect.left + window.scrollX;
+      startY = rect.top + window.scrollY;
+
+      item.style.position = 'absolute';
+      item.style.left = startX + 'px';
+      item.style.top = startY + 'px';
+      item.style.zIndex = '1000';
+      item.style.cursor = 'grabbing';
+
+      const mover = (e) => {
+        if (!arrastando) return;
+        item.style.left = (e.pageX - offsetX) + 'px';
+        item.style.top = (e.pageY - offsetY) + 'px';
+      };
+
+      document.addEventListener('mousemove', mover);
+
+      const soltar = () => {
+        arrastando = false;
+        item.classList.remove('dragging');
+        item.style.cursor = 'grab';
+
+        document.removeEventListener('mousemove', mover);
+        document.removeEventListener('mouseup', soltar);
+
+        const nomeResiduo = residuo.src.split('/').pop();
+        const lixeiraCorreta = mapaLixeiras[nomeResiduo];
+        let colocadoCorreto = false;
+
+        lixeiras.forEach(lixeira => {
+          const rectLixeira = lixeira.getBoundingClientRect();
+          const rectResiduo = item.getBoundingClientRect();
+
+          const dentro =
+            rectResiduo.right > rectLixeira.left &&
+            rectResiduo.left < rectLixeira.right &&
+            rectResiduo.bottom > rectLixeira.top &&
+            rectResiduo.top < rectLixeira.bottom;
+
+          if (dentro && lixeira.src.includes(lixeiraCorreta)) {
+            colocadoCorreto = true;
+          }
+        });
+
+        if (colocadoCorreto) {
+          mostrarMensagem(mensagemAcerto);
+          item.style.transition = 'opacity 0.5s ease';
+          item.style.opacity = '0';
+          setTimeout(() => {
+            item.style.display = 'none';
+            indiceAtual++;
+            if (indiceAtual >= residuos.length) {
+              mensagemFinal.style.display = 'block';
+            } else {
+              mostrarResiduoAtual();
+            }
+          }, 500);
+        } else {
+          mostrarMensagem(mensagemErro);
+          item.style.position = 'static';
+          item.style.opacity = '1';
+        }
+      };
+
+      document.addEventListener('mouseup', soltar);
+    });
+  };
+
+  residuos.forEach(configurarArrastar);
+});
+
+</script>
+
+
+
+</body>
+</html>
