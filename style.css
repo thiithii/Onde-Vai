@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
+  margin: 1;
+  font-family: 'Raleway';
   text-align: center;
   background-color: #eef7ee;
 }
@@ -24,11 +24,6 @@ body::before {
   z-index: -1;
 }
 
-h1 { 
-  color: #2b6e2f; 
-  font-family: 'Raleway';
-}
-
 h2{
   color: white;
 }
@@ -40,9 +35,10 @@ h2{
 
 .ondeB{
   color: white;
-  font-size: 30px;
-  padding-top: 50px; 
-  padding-left: 50px;
+  font-size: 100px;
+  margin-top: 30px; 
+  margin-left: 30px;
+  margin-bottom: 10px;
   text-align: start;
 }
 
@@ -57,7 +53,7 @@ b{
 .tex2{
   font-size: 16px;
   text-align: start;
-  padding-left: 50px;
+  margin-left: 50px;
 }
 
 .start{
@@ -71,11 +67,11 @@ b{
   display: flex;
   justify-content: center;
   gap: 90px;
-  position: fixed;        /* fixa na tela */
-  bottom: 30px;           /* distância da parte inferior */
-  left: 50%;              /* centraliza horizontalmente */
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
   transform: translateX(-50%);
-  z-index: 500;           /* garante que fique sobre outros elementos */
+  z-index: 500;
 }
 
 .lixeiras img{
@@ -93,9 +89,9 @@ b{
   width: 120px;
   height: auto;
   display: block;
-  margin: 10px auto 10px auto;
+  margin: auto auto auto auto;
   cursor: grab;
-  transition: transform 0.2s ease;
+  transition: transform 0.9s ease;
 }
 
 .residuo:active {
@@ -122,7 +118,7 @@ b{
   justify-content: center;
   align-items: flex-start;
   gap: 60px;
-  margin-top: 120px;
+  margin-top: 12px;
   flex-wrap: wrap;
 }
 
@@ -140,7 +136,6 @@ b{
   transform: scale(1.05);
 }
 
-/* === Responsividade === */
 @media (max-width: 800px) {
   .onde {
     font-size: 50px;
@@ -148,13 +143,13 @@ b{
   }
 
   .ondeB {
-    font-size: 24px;
+    font-size: 70px;
     padding-top: 30px;
     padding-left: 20px;
   }
 
   .tex2 {
-    font-size: 14px;
+    font-size: 20px;
     padding-left: 20px;
   }
 
@@ -182,18 +177,18 @@ b{
   }
 
   .ondeB {
-    font-size: 20px;
+    font-size: 60px;
     padding-top: 20px;
     padding-left: 10px;
   }
 
   .tex2 {
-    font-size: 12px;
+    font-size: 15px;
     padding-left: 10px;
   }
 
   .residuo {
-    width: 60px;
+    width: 50px;
   }
 
   .lixeiras img {
@@ -201,11 +196,12 @@ b{
   }
 
   .residuos-container {
+    margin-top: 50px;
     gap: 20px;
   }
 
   .lixeiras {
-    gap: 10px;
+    gap: 35px;
     flex-wrap: wrap;
   }
 }
