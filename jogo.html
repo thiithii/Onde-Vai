@@ -112,7 +112,7 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener('DOMContentLoaded', () => {
   const residuos = Array.from(document.querySelectorAll('.residuo-item'));
   const lixeiras = document.querySelectorAll('.lixeiras img');
 
@@ -136,7 +136,6 @@
     'sacola.png':'Lvermelha.png',
   };
 
-  // Função para criar mensagens
   const criarMensagem = (texto, corFundo) => {
     const el = document.createElement('div');
     el.textContent = texto;
@@ -165,14 +164,11 @@
 
   const mensagemAcerto = criarMensagem('MUITO BEM!', '#35a535');
   const mensagemErro = criarMensagem('TENTE NOVAMENTE', '#d32f2f');
-
-  // Mensagem final com botão
   const mensagemFinal = criarMensagem('', '#35a535');
   const textoFinal = document.createElement('div');
   textoFinal.textContent = 'PARABÉNS!';
   textoFinal.style.marginBottom = '15px';
   mensagemFinal.appendChild(textoFinal);
-
   const botaoRecomeçar = document.createElement('button');
   botaoRecomeçar.textContent = 'RECOMEÇAR';
   Object.assign(botaoRecomeçar.style, {
@@ -223,34 +219,29 @@
     let arrastando = false;
     let offsetX = 0;
     let offsetY = 0;
-    let startX = 0;
-    let startY = 0;
 
-    item.addEventListener('mousedown', (e) => {
+    const iniciarArraste = (e) => {
       e.preventDefault();
       arrastando = true;
       item.classList.add('dragging');
 
+      const evt = e.touches ? e.touches[0] : e;
       const rect = item.getBoundingClientRect();
-      offsetX = e.pageX - rect.left;
-      offsetY = e.pageY - rect.top;
-
-      startX = rect.left + window.scrollX;
-      startY = rect.top + window.scrollY;
+      offsetX = evt.pageX - rect.left;
+      offsetY = evt.pageY - rect.top;
 
       item.style.position = 'absolute';
-      item.style.left = startX + 'px';
-      item.style.top = startY + 'px';
+      item.style.left = rect.left + window.scrollX + 'px';
+      item.style.top = rect.top + window.scrollY + 'px';
       item.style.zIndex = '1000';
       item.style.cursor = 'grabbing';
 
-      const mover = (e) => {
+      const mover = (ev) => {
         if (!arrastando) return;
-        item.style.left = (e.pageX - offsetX) + 'px';
-        item.style.top = (e.pageY - offsetY) + 'px';
+        const movEvt = ev.touches ? ev.touches[0] : ev;
+        item.style.left = (movEvt.pageX - offsetX) + 'px';
+        item.style.top = (movEvt.pageY - offsetY) + 'px';
       };
-
-      document.addEventListener('mousemove', mover);
 
       const soltar = () => {
         arrastando = false;
@@ -259,6 +250,8 @@
 
         document.removeEventListener('mousemove', mover);
         document.removeEventListener('mouseup', soltar);
+        document.removeEventListener('touchmove', mover);
+        document.removeEventListener('touchend', soltar);
 
         const nomeResiduo = residuo.src.split('/').pop();
         const lixeiraCorreta = mapaLixeiras[nomeResiduo];
@@ -267,7 +260,6 @@
         lixeiras.forEach(lixeira => {
           const rectLixeira = lixeira.getBoundingClientRect();
           const rectResiduo = item.getBoundingClientRect();
-
           const dentro =
             rectResiduo.right > rectLixeira.left &&
             rectResiduo.left < rectLixeira.right &&
@@ -299,8 +291,14 @@
         }
       };
 
+      document.addEventListener('mousemove', mover);
       document.addEventListener('mouseup', soltar);
-    });
+      document.addEventListener('touchmove', mover, { passive: false });
+      document.addEventListener('touchend', soltar);
+    };
+
+    item.addEventListener('mousedown', iniciarArraste);
+    item.addEventListener('touchstart', iniciarArraste, { passive: false });
   };
 
   residuos.forEach(configurarArrastar);

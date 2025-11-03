@@ -1,82 +1,93 @@
+/* === Seu CSS original atualizado para fixar lixeiras === */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #eef7ee;
-  }
-  
-  a{
-    text-decoration: none;
-  }
-
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-image: url('floresta.jpg');
-    background-size: cover;
-    background-position: center;
-    filter: blur(4px);
-    transform: scale(1.1);
-    z-index: -1;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #eef7ee;
 }
-  
-  h1 { 
-    color: #2b6e2f; 
-    font-family: 'Raleway';
+
+a {
+  text-decoration: none;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('floresta.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(4px);
+  transform: scale(1.1);
+  z-index: -1;
+}
+
+h1 { 
+  color: #2b6e2f; 
+  font-family: 'Raleway';
 }
 
 h2{
-    color: white;
+  color: white;
 }
 
 .onde{
-    font-size: 70px;
-    padding-top: 155px;
+  font-size: 70px;
+  padding-top: 155px;
 }
 
 .ondeB{
-    color: white;
-    font-size: 30px;
-    padding-top: 50px; 
-    padding-left: 50px;
-    text-align: start;
+  color: white;
+  font-size: 30px;
+  padding-top: 50px; 
+  padding-left: 50px;
+  text-align: start;
 }
 
 b{
-    color: white;
+  color: white;
 }
 
 .tex{
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .tex2{
-    font-size: 16px;
-    text-align: start;
-    padding-left: 50px;
+  font-size: 16px;
+  text-align: start;
+  padding-left: 50px;
 }
 
 .start{
-    padding: 15px;
-    width: 50px;
-    display: flex;
-    margin: auto;
+  padding: 15px;
+  width: 50px;
+  display: flex;
+  margin: auto;
 }
 
+.lixeiras {
+  display: flex;
+  justify-content: center;
+  gap: 90px;
+  position: fixed;        /* fixa na tela */
+  bottom: 30px;           /* distância da parte inferior */
+  left: 50%;              /* centraliza horizontalmente */
+  transform: translateX(-50%);
+  z-index: 500;           /* garante que fique sobre outros elementos */
+}
 
-  .lixeiras {
-    display: flex;
-    justify-content: center;
-    gap: 90px;
-    margin-top: 1000px;
-  }
+.lixeiras img{
+  width: 90px;
+  height: auto;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
 
-  .lixeiras img{
-    width: 90px;
-  }
+.lixeiras img:hover {
+  transform: scale(1.1);
+}
 
 .residuo {
   width: 120px;
@@ -98,58 +109,6 @@ b{
   margin-top: 5px;
 }
 
-.lixeiras {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 40px;
-  margin-top: 50px;
-}
-
-.lixeiras img {
-  width: 85px; 
-  height: auto;
-  transition: transform 0.2s ease;
-  cursor: pointer;
-}
-
-.lixeiras img:hover {
-  transform: scale(1.1);
-}
-
-.nome-residuo {
-font-family: 'Raleway';
-  color: white;
-  font-weight: 400;
-  font-size: 18px;
-  margin-top: 5px;
-  text-align: center;
-}
-
-.residuos-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 60px;
-  margin-top: 120px;
-  flex-wrap: wrap;
-}
-
-.residuo-item {
-  text-align: center;
-}
-
-.residuo {
-  width: 100px;
-  height: auto;
-  cursor: grab;
-  transition: transform 0.2s ease;
-}
-
-.residuo:active {
-  transform: scale(1.05);
-}
-
 .nome-residuo {
   font-family: 'Raleway';
   color: white;
@@ -168,7 +127,8 @@ font-family: 'Raleway';
 }
 
 .residuo-item {
-  text-align: center;  cursor: grab;
+  text-align: center;
+  cursor: grab;
   position: relative;
 }
 
@@ -176,20 +136,76 @@ font-family: 'Raleway';
   z-index: 1000;
 }
 
-.residuo {
-  width: 90px;
-  height: auto;
-  transition: transform 0.2s ease;
-}
-
 .residuo-item:active .residuo {
   transform: scale(1.05);
 }
 
-.nome-residuo {
-  font-family: 'Raleway';
-  color: white;
-  font-weight: 400;
-  font-size: 18px;
-  margin-top: 8px;
+/* === Responsividade === */
+@media (max-width: 800px) {
+  .onde {
+    font-size: 50px;
+    padding-top: 100px;
+  }
+
+  .ondeB {
+    font-size: 24px;
+    padding-top: 30px;
+    padding-left: 20px;
+  }
+
+  .tex2 {
+    font-size: 14px;
+    padding-left: 20px;
+  }
+
+  .residuo {
+    width: 80px;
+  }
+
+  .lixeiras img {
+    width: 60px;
+  }
+
+  .residuos-container {
+    gap: 40px;
+  }
+
+  .lixeiras {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .onde {
+    font-size: 40px;
+    padding-top: 70px;
+  }
+
+  .ondeB {
+    font-size: 20px;
+    padding-top: 20px;
+    padding-left: 10px;
+  }
+
+  .tex2 {
+    font-size: 12px;
+    padding-left: 10px;
+  }
+
+  .residuo {
+    width: 60px;
+  }
+
+  .lixeiras img {
+    width: 50px;
+  }
+
+  .residuos-container {
+    gap: 20px;
+  }
+
+  .lixeiras {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
 }
