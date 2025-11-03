@@ -149,6 +149,7 @@ b{
   }
 
   .tex2 {
+    margin-left: 40px;
     font-size: 20px;
     padding-left: 20px;
   }
@@ -183,6 +184,7 @@ b{
   }
 
   .tex2 {
+    margin-left: 40px;
     font-size: 15px;
     padding-left: 10px;
   }
@@ -200,8 +202,42 @@ b{
     gap: 20px;
   }
 
+  
+
   .lixeiras {
     gap: 35px;
     flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 400px) {
+  .onde {
+    font-size: 8px;
+    padding-top: 70px;
+  }
+
+  .ondeB {
+    font-size: 40px;
+    padding-top: 20px;
+    padding-left: 10px;
+  }
+
+  .tex2 {
+    margin-left: 35px;
+    font-size: 14px;
+    padding-left: 10px;
+  }
+
+  .residuo {
+    width: 50px;
+  }
+
+  .lixeiras img {
+    width: 50px;
+  }
+
+  .residuos-container {
+    margin-top: 50px;
+    gap: 20px;
   }
 }
